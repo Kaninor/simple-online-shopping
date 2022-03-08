@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../assets/logo1.png">
+    <title>Sign Up</title>
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <form>
+            <div class="auth-form-control">
+                <label for="username" class="auth-label">Username :</label>
+                <input id="username" type="text" name="username" class="auth-input-control" placeholder="Type here..." required />
+            </div>
+            <div class="auth-form-control">
+                <label for="email" class="auth-label">Email :</label>
+                <input id="email" type="email" name="email" class="auth-input-control" placeholder="Type here..." required />
+            </div>
+            <div class="auth-form-control">
+                <label for="password" class="auth-label">Password :</label>
+                <input id="password" type="password" name="password" class="auth-input-control" placeholder="Type here..." required />
+            </div>
+            <div class="auth-form-control-submit">
+                <input type="submit" class="auth-submit btn-green" value="Sign Up" />
+                <button type="button" class="auth-link-btn" id="auth-link-btn">← Back to home</button>
+            </div>
+            <div class="auth-link-container">
+                <a href="/pages/auth/login.html" class="auth-link-a">Already have an account ?</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const back_to_home_btn = document.getElementById("auth-link-btn")
+
+        back_to_home_btn.addEventListener("click", () => {
+            location.href = "/pages/";
+        });
+    </script>
+</body>
+</html>

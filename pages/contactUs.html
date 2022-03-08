@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../assets/logo1.png">
+    <title>Contact Us</title>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container">
+            <div class="logo-heading-container">
+                <img class="logo" src="../assets/logo1.png">
+                <h2>Online Shopping</h2>
+            </div>
+            <div class="form-control">
+                <input type="search" placeholder="Search...">
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- end of header -->
+
+    <!-- nav -->
+    <nav id="navbar">
+        <div>
+            <ul id="main-nav-ul">
+                <li><a href="/pages/">Home</a></li>
+                <li><a href="/pages/product.html">Product</a></li>
+                <li><a href="/pages/contactUs.html" class="active">Contact us</a></li>
+            </ul>
+            <ul id="auth-nav-ul">
+                <li><a id="sign-up" href="/pages/auth/signup.html">Sign up</a></li>
+                <li><a id="login" href="/pages/auth/login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="contact-us-container">
+            <div class="form-container">
+                <form>
+                    <div class="form-control-contact-us">
+                        <label for="problem" class="form-label">Is There Any Problem ?</label>
+                        <input id="problem" class="form-input" type="text" name="problem" placeholder="Type here..." required />
+                    </div>
+                    <div class="form-control-contact-us">
+                        <label for="user-email" class="form-label">Email : </label>
+                        <input id="user-email" class="form-input" type="email" name="user-email" placeholder="Type here..." required />
+                    </div>
+                    <div class="form-control-contact-us">
+                        <label for="user-phonenumber" class="form-label">Phone Number (Optional) : </label>
+                        <input id="user-phonenumber" class="form-input" type="tel" name="user-phonenumber" placeholder="Type here..." />
+                    </div>
+                    <div class="form-control-contact-us">
+                        <input class="form-submit" type="submit" />
+                    </div>
+                </form>
+            </div>
+
+            <img class="email-icon" src="../assets/email/email1.png" />
+        </div>
+        
+        <p class="contactus-desc">
+            Here you can tell us our bugs and we check it and then we will fix those bugs.<br>
+            problem and email boxes are required but the phonenumber box is unrequired.<br>
+            after fixing the bugs we will send you a message to your email and to your phonenumber if you've filled it.
+        </p>
+    </main>
+
+
+    <footer>Online Shopping	&copy;</footer>
+
+    <script src="../js/contactUs.js"></script>
+    <script src="../js/stickyNavbar.js"></script>
+</body>
+</html>
