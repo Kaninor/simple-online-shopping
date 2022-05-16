@@ -1,0 +1,150 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 13, 2022 at 01:02 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.5
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `store`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fruit`
+--
+
+CREATE TABLE `fruit` (
+  `id` int(11) NOT NULL,
+  `path` varchar(100) NOT NULL,
+  `price` float NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `description` varchar(170) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `fruit`
+--
+
+INSERT INTO `fruit` (`id`, `path`, `price`, `name`, `description`) VALUES
+(1, '/store/assets/card-images/apple.jpg', 0.99, 'Apple', 'The apple is a deciduous tree, generally standing 2 to 4.5 m (6 to 15 ft) tall in cultivation and up'),
+(2, '/store/assets/card-images/avakado.jpeg', 3.99, 'Avakado', 'Persea americana, or the avocado, possibly originated in the Tehuacan Valley in the state of Puebla, Mexico, although fossil ev...'),
+(3, '/store/assets/card-images/Blueberries.jpg', 2.99, 'Blueberries', 'Blueberries are a widely distributed and widespread group of perennial flowering plants with blue or purple berries. They are c...'),
+(4, '/store/assets/card-images/carrot.jpg', 1.99, 'Carrot', 'Both written history and molecular genetic studies indicate that the domestic carrot has a single origin in Central Asia. Its w...'),
+(5, '/store/assets/card-images/Cherries.jpg', 1.99, 'Cherries', 'A cherry is the fruit of many plants of the genus Prunus, and is a fleshy drupe (stone fruit). Commercial cherries are obtained...'),
+(6, '/store/assets/card-images/coconut.jpg', 3.99, 'Coconut', 'Modern genetic studies have identified the center of origin of coconuts as being the Central Indo-Pacific, the region between w...'),
+(7, '/store/assets/card-images/Cruciferous.jpg', 3.99, 'Cruciferous', 'Cruciferous vegetables contain glucosinolates, which are under research for their potential to affect cancer. Glucosinolates ar...'),
+(8, '/store/assets/card-images/cucumber.jpg', 1.99, 'Cucumber', 'The cucumber is a creeping vine that roots in the ground and grows up trellises or other supporting frames, wrapping around sup...'),
+(9, '/store/assets/card-images/Custard-Apple.jpg', 2.99, 'Custard-Apple', 'The fruits vary in shape, heart-shaped, spherical, oblong or irregular. The size ranges from 7 to 12 cm (2.8 to 4.7 in), depend...'),
+(10, '/store/assets/card-images/Date Fruit.jpg', 6.99, 'Date', 'Date trees typically reach about 21–23 metres (69–75 ft) in height, growing singly or forming a clump with several stems from a...'),
+(11, '/store/assets/card-images/Durian.jpg', 5.99, 'Durian', 'Durian trees are large, growing to 25–50 metres (80–165 feet) in height depending on the species. The leaves are evergreen, ell...'),
+(12, '/store/assets/card-images/Feijoa.jpg', 4.99, 'Feijoa', 'The fruit, known as feijoa, matures in autumn and is green, ellipsoid, and about the size of a chicken egg. It has a sweet, aro...'),
+(13, '/store/assets/card-images/garlic.jpg', 2.99, 'Garlic', 'Allium sativum is a perennial flowering plant growing from a bulb. It has a tall, erect flowering stem that grows up to 1 m (3 ...'),
+(14, '/store/assets/card-images/Grapefruit.jpg', 3.99, 'Grapefruit', 'The evergreen grapefruit trees usually grow to around 5–6 m (16–20 ft) tall, although they may reach 13–15 m (43–49 ft). The le...'),
+(15, '/store/assets/card-images/Grapes.jpg', 4.99, 'Grapes', 'The Middle East is generally described as the homeland of grape and the cultivation of this plant began there 6,000–8,000 years...'),
+(16, '/store/assets/card-images/Kiwifruit.jpg', 3.99, 'Kiwi', 'Kiwifruit is native to central and eastern China. The first recorded description of the kiwifruit dates to 12th century China d...'),
+(17, '/store/assets/card-images/lettuce.jpg', 2.99, 'Lettuce', 'Lettuce\'s native range spreads from the Mediterranean to Siberia, although it has been transported to almost all areas of the w...'),
+(18, '/store/assets/card-images/Mango.jpg', 6.99, 'Mango', 'Mango trees grow to 30–40 m (98–131 ft) tall, with a crown radius of 10–15 m (33–49 ft). The trees are long-lived, as some spec...'),
+(19, '/store/assets/card-images/melon.jpg', 5.99, 'Melon', 'Melons originated in Africa or in the hot valleys of Southwest Asia, especially Iran and India, from where they gradually began...'),
+(20, '/store/assets/card-images/onion.jpg', 3.99, 'Onion', 'The onion plant has been grown and selectively bred in cultivation for at least 7,000 years. It is a biennial plant, but is usu...'),
+(21, '/store/assets/card-images/orange.jpg', 1.99, 'Orange', 'The sweet orange is not a wild fruit, having arisen in domestication from a cross between a non-pure mandarin orange and a hybr...'),
+(22, '/store/assets/card-images/Papaya.jpg', 2.99, 'Papaya', 'he papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spiral...'),
+(23, '/store/assets/card-images/peach.jpg', 2.99, 'Peach', 'Although its botanical name Prunus persica refers to Persia, genetic studies suggest peaches originated in China, where they ha...'),
+(24, '/store/assets/card-images/Pear.jpg', 4.99, 'Pear', 'Pears are fruits produced and consumed around the world, growing on a tree and harvested...'),
+(25, '/store/assets/card-images/Pineapple.jpg', 6.99, 'Pineapple', 'The wild plant originates from the Paraná–Paraguay River drainages between southern Brazil and Paraguay. Little is known about ...'),
+(26, '/store/assets/card-images/Pistachio.jpg', 15.99, 'Pistachio', 'The pistachio tree is native to regions of Central Asia, including present-day Iran and Afghanistan. Archaeology shows that pis...'),
+(27, '/store/assets/card-images/potato.jpg', 3.99, 'Potato', 'The potato was first domesticated in the region of modern-day southern Peru and northwestern Bolivia by pre-Columbian farmers, ...'),
+(28, '/store/assets/card-images/Strawberries.jpg', 2.99, 'Strawberries', 'The strawberry fruit was mentioned in ancient Roman literature in reference to its medicinal use. The French began taking the s...'),
+(29, '/store/assets/card-images/tomato.jpg', 2.99, 'Tomato', 'Tomato plants are vines, initially decumbent, typically growing 180 cm (6 ft) or more above the ground if supported, although e...'),
+(30, '/store/assets/card-images/watermelon.jpg', 4.99, 'Watermelon', 'The watermelon is an annual that has a prostrate or climbing habit. Stems are up to 3 metres (10 feet) long and new growth has ...');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `problems`
+--
+
+CREATE TABLE `problems` (
+  `id` int(11) NOT NULL,
+  `problem` varchar(150) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phonenumber` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `fruit`
+--
+ALTER TABLE `fruit`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `path` (`path`);
+
+--
+-- Indexes for table `problems`
+--
+ALTER TABLE `problems`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `fruit`
+--
+ALTER TABLE `fruit`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `problems`
+--
+ALTER TABLE `problems`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -127,26 +127,16 @@ nav a:hover {
     padding-right: 10px;
 }
 
-#sign-up { 
-    background-color: green;
-    color: white;
-    padding: 11px;
-    border-radius: 4px;
-}
-
-#sign-up:hover {
-    background-color: rgb(4, 163, 44);
-}
-
-#login {
-    background-color: rgb(64, 124, 255);
+#log-out {
+    background-color: rgb(198, 38, 38);
     color: white;
     border-radius: 4px;
     padding: 11px;
+    cursor: pointer;
 }
 
-#login:hover {
-    background-color: rgb(87, 116, 177);
+#log-out:hover {
+    background-color: rgb(225, 72, 72);
 }
 
 .component-heading {
@@ -264,7 +254,7 @@ footer {
     padding-top: 60px;
 }
 
-.sticky #login {
+.sticky #log-out {
     margin-right: 10px;
 }
 
@@ -457,7 +447,7 @@ footer {
 .auth-link-btn {
     margin-left: 5px;
     margin-top: 4px;
-    width: 120px;
+    width: 170px;
     height: 38px;
     border-radius: 4px;
     border: none;
