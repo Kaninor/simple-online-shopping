@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php 
+
+require(__DIR__.'/../auth_validation.php');
+
+session_start(); 
+auth_validator('/store/pages/auth/login.php');
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
