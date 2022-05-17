@@ -4,6 +4,7 @@ session_start();
 
 require(__DIR__.'/../auth_validation.php');
 require(__DIR__.'/../Database.php');
+require(__DIR__.'/../functions.php');
 
 auth_validator('/store/pages/auth/login.php');
 
@@ -36,135 +37,141 @@ $result = $conn->select('fruit');
     <main>
         <section id="card-container-section"></section>
 
-        <div class="filter-title" id="filter-title">
-            <span class="show-filter" id="show-filter">Show Filter ∨</span>
-            <select id="filter-select">
-                <option value="newest">Newest</option>
-                <option value="popular">Most Popular</option>
-                <option value="oldest">Oldest</option>
-                <option value="expensive">Most Expensive</option>
-                <option value="cheapest">Cheapest</option>
-            </select>
+        <div style="display: flex; justify-content: center;">
+            <div class="filter-title" id="filter-title">
+                <span class="show-filter" id="show-filter">Show Filter ∨</span>
+            </div>
         </div>
 
         <hr class="hr" id="hr">
 
         <div class="filter-container" id="filter-container">
-            <div class="filter-keywords-name-container">
-                <div class="filter-form-control">
-                    <label class="filter-label">Keywords : </label>
-                    <input type="text" id="filter-product-keywords" class="filter-input" placeholder="Type here..." />
-                </div>
-                <div class="filter-form-control">
-                    <label class="filter-label">Name : </label>
-                    <input type="text" id="filter-product-name" class="filter-input" placeholder="Type here..." />
-                </div>
-            </div>
-            <div class="filter-form-control">
-                <label class="filter-label">Price : </label>
-                <div class="filter-price-container">
-                    <div>
-                        <input type="number" min="0" id="filter-product-price-min" class="filter-input input-425" placeholder="Min..." />
-                        <label class="filter-price-symbol">$</label>
-                    </div>
-                    <div>
-                        <input type="number" min="0" id="filter-product-price-max" class="filter-input input-425" placeholder="Max..." />
-                        <label class="filter-price-symbol">$</label>
+            <form method="POST" action="/store/pages/filter.php">
+                <div class="filter-keywords-name-container">
+                    <div class="filter-form-control">
+                        <label class="filter-label">Keywords : </label>
+                        <input type="text" name="p-keyword" id="filter-product-keywords" class="filter-input filter-500" placeholder="Type here..." value="<?= postParams('keyword', $_GET) ?>" />
                     </div>
                 </div>
-            </div>
-            <div class="filter-btn-control">
-                <input type="button" class="filter-submit" value="Search" id="filter-submit" />
-                <input type="button" class="filter-clear" value="Clear" id="filter-clear" />
-            </div>
-        </div>
-
-        <div id="main-card-container">
-            <?php for ($j = 0; $j < 3; $j++): ?>
-                <div class="card-container">
-                    <?php for ($i = 0; $i < 4 && ($row = $conn->fetch($result)); $i++): ?>
-                        <div class="card">
-                            <div class="card-img-container">
-                                <img class="card-img" src="<?= $row["path"] ?>" />
-                            </div>
-                            <div class="card-text">
-                                <h3><?= $row["name"] ?></h3>
-                                <p><?= $row["description"] ?></p>
-                            </div>
-                            <div class="card-button-container">
-                                <h3>$<?= $row["price"] ?></h3>
-                                <ul>
-                                    <li>
-                                        <button class="add-to-card-btn">Add To Cart</button>
-                                    </li>
-                                    <li>
-                                        <button class="buy-btn">Buy</button>
-                                    </li>
-                                </ul>
-                            </div>
+                <div class="filter-form-control">
+                    <label class="filter-label">Price : </label>
+                    <div class="filter-price-container">
+                        <div>
+                            <input type="number" step="0.1" name="p-price-min" min="0" id="filter-product-price-min" class="filter-input input-425" placeholder="Min..." value="<?= postParams('min', $_GET) ?>" />
+                            <label class="filter-price-symbol">$</label>
                         </div>
-                    <?php endfor; ?>
+                        <div>
+                            <input type="number" step="0.1" name="p-price-max" min="0" id="filter-product-price-max" class="filter-input input-425" placeholder="Max..." value="<?= postParams('max', $_GET) ?>" />
+                            <label class="filter-price-symbol">$</label>
+                        </div>
+                    </div>
                 </div>
-            <?php endfor; ?>
-        </div>
-
-        <div id="sec-card-container" class="d-none">
-            <?php for ($j = 0; $j < 3; $j++): ?>
-                <div class="card-container">
-                    <?php for ($i = 0; $i < 4 && ($row = $conn->fetch($result)); $i++): ?>
-                        <div class="card">
-                            <div class="card-img-container">
-                                <img class="card-img" src="<?= $row["path"] ?>" />
-                            </div>
-                            <div class="card-text">
-                                <h3><?= $row["name"] ?></h3>
-                                <p><?= $row["description"] ?></p>
-                            </div>
-                            <div class="card-button-container">
-                                <h3>$<?= $row["price"] ?></h3>
-                                <ul>
-                                    <li>
-                                        <button class="add-to-card-btn">Add To Cart</button>
-                                    </li>
-                                    <li>
-                                        <button class="buy-btn">Buy</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    <?php endfor; ?>
+                <div class="filter-btn-control">
+                    <input type="submit" class="filter-submit" value="Search" id="filter-submit" />
+                    <input type="button" class="filter-clear" value="Clear" id="filter-clear" />
                 </div>
-            <?php endfor; ?>
+            </form>
         </div>
 
-        <div id="third-card-container" class="d-none">
-            <div class="card-container">
-                <?php for ($i = 0; $i < 4 && ($row = $conn->fetch($result)); $i++): ?>
-                    <div class="card">
-                        <div class="card-img-container">
-                            <img class="card-img" src="<?= $row["path"] ?>" />
-                        </div>
-                        <div class="card-text">
-                            <h3><?= $row["name"] ?></h3>
-                            <p><?= $row["description"] ?></p>
-                        </div>
-                        <div class="card-button-container">
-                            <h3>$<?= $row["price"] ?></h3>
-                            <ul>
-                                <li>
-                                    <button class="add-to-card-btn">Add To Cart</button>
-                                </li>
-                                <li>
-                                    <button class="buy-btn">Buy</button>
-                                </li>
-                            </ul>
-                        </div>
+        <?php if (isset($_SESSION['product']) && $_SESSION['product'] != 0): ?>
+            <?php $sr = 0; ?>
+            <div id="main-card-container">
+                <?php while ($sr < count($_SESSION['product'])): ?>
+                    <div class="card-container">
+                        <?php for ($i = $sr; $i < count($_SESSION['product']); $i++ /*$_SESSION['product'] as $p*/): ?>
+                            <div class="card">
+                                <div class="card-img-container">
+                                    <img class="card-img" src="<?= $_SESSION['product'][$i]["path"] ?>" />
+                                </div>
+                                <div class="card-text">
+                                    <h3><?= $_SESSION['product'][$i]["name"] ?></h3>
+                                    <p><?= $_SESSION['product'][$i]["description"] ?></p>
+                                </div>
+                                <div class="card-button-container">
+                                    <h3>$<?= $_SESSION['product'][$i]["price"] ?></h3>
+                                    <ul>
+                                        <li>
+                                            <button class="add-to-card-btn">Add To Cart</button>
+                                        </li>
+                                        <li>
+                                            <button class="buy-btn">Buy</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <?php 
+                                $sr++;
+                                if ($sr % 4 == 0) {
+                                    break;
+                                }
+                            ?>
+                        <?php endfor; ?>
+                    </div>
+                <?php endwhile; ?>
+            </div>
+            <?php $_SESSION['product'] = 0; ?>
+        <?php else: ?>
+            <div id="main-card-container">
+                <?php for ($j = 0; $j < 3; $j++): ?>
+                    <div class="card-container">
+                        <?php for ($i = 0; $i < 4 && ($row = $conn->fetch($result)); $i++): ?>
+                            <div class="card">
+                                <div class="card-img-container">
+                                    <img class="card-img" src="<?= $row["path"] ?>" />
+                                </div>
+                                <div class="card-text">
+                                    <h3><?= $row["name"] ?></h3>
+                                    <p><?= $row["description"] ?></p>
+                                </div>
+                                <div class="card-button-container">
+                                    <h3>$<?= $row["price"] ?></h3>
+                                    <ul>
+                                        <li>
+                                            <button class="add-to-card-btn">Add To Cart</button>
+                                        </li>
+                                        <li>
+                                            <button class="buy-btn">Buy</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        <?php endfor; ?>
                     </div>
                 <?php endfor; ?>
             </div>
-            <div class="card-container">
+
+            <div id="sec-card-container" class="d-none">
+                <?php for ($j = 0; $j < 3; $j++): ?>
+                    <div class="card-container">
+                        <?php for ($i = 0; $i < 4 && ($row = $conn->fetch($result)); $i++): ?>
+                            <div class="card">
+                                <div class="card-img-container">
+                                    <img class="card-img" src="<?= $row["path"] ?>" />
+                                </div>
+                                <div class="card-text">
+                                    <h3><?= $row["name"] ?></h3>
+                                    <p><?= $row["description"] ?></p>
+                                </div>
+                                <div class="card-button-container">
+                                    <h3>$<?= $row["price"] ?></h3>
+                                    <ul>
+                                        <li>
+                                            <button class="add-to-card-btn">Add To Cart</button>
+                                        </li>
+                                        <li>
+                                            <button class="buy-btn">Buy</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        <?php endfor; ?>
+                    </div>
+                <?php endfor; ?>
+            </div>
+
+            <div id="third-card-container" class="d-none">
                 <div class="card-container">
-                    <?php for ($i = 0; $i < 2 && ($row = $conn->fetch($result)); $i++): ?>
+                    <?php for ($i = 0; $i < 4 && ($row = $conn->fetch($result)); $i++): ?>
                         <div class="card">
                             <div class="card-img-container">
                                 <img class="card-img" src="<?= $row["path"] ?>" />
@@ -187,20 +194,45 @@ $result = $conn->select('fruit');
                         </div>
                     <?php endfor; ?>
                 </div>
+                <div class="card-container">
+                    <div class="card-container">
+                        <?php for ($i = 0; $i < 2 && ($row = $conn->fetch($result)); $i++): ?>
+                            <div class="card">
+                                <div class="card-img-container">
+                                    <img class="card-img" src="<?= $row["path"] ?>" />
+                                </div>
+                                <div class="card-text">
+                                    <h3><?= $row["name"] ?></h3>
+                                    <p><?= $row["description"] ?></p>
+                                </div>
+                                <div class="card-button-container">
+                                    <h3>$<?= $row["price"] ?></h3>
+                                    <ul>
+                                        <li>
+                                            <button class="add-to-card-btn">Add To Cart</button>
+                                        </li>
+                                        <li>
+                                            <button class="buy-btn">Buy</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        <?php endfor; ?>
+                    </div>
+                </div>
+            </div>      
+
+            <div class="pagination-button-container text-align-center">
+                <button class="pagination-button no" id="pagination-to-left">&laquo;</button>
+                <button class="pagination-button pagination-active-button">1</button>
+                <button class="pagination-button">2</button>
+                <button class="pagination-button">3</button>
+                <button class="pagination-button no" id="pagination-to-right">&raquo;</button>
             </div>
-        </div>
-
-
-        <div class="pagination-button-container text-align-center">
-            <button class="pagination-button no" id="pagination-to-left">&laquo;</button>
-            <button class="pagination-button pagination-active-button">1</button>
-            <button class="pagination-button">2</button>
-            <button class="pagination-button">3</button>
-            <button class="pagination-button no" id="pagination-to-right">&raquo;</button>
-        </div>
+            
+            <footer>Online Shopping	&copy;</footer>
+        <?php endif; ?>
     </main>
-
-    <footer>Online Shopping	&copy;</footer>
 
     <script src="../js/product.js"></script>
 </body>

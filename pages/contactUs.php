@@ -66,10 +66,10 @@ auth_validator('/store/pages/auth/login.php');
     <script src="../js/contactUs.js"></script>
 </body>
 
-    <?php if ($_SESSION['contact-us-msg'] == 1): ?>
+    <?php if (isset($_SESSION['contact-us-msg']) && $_SESSION['contact-us-msg'] == 1): ?>
         <?php $_SESSION['contact-us-msg'] = 0; ?>
         <script>alert("Problem sent successfully!")</script>
-    <?php elseif ($_SESSION['contact-us-msg'] == 2): ?>
+    <?php elseif (isset($_SESSION['contact-us-msg']) && $_SESSION['contact-us-msg'] == 2): ?>
         <?php $_SESSION['contact-us-msg'] = 0; ?>
         <script>alert("Error in sending the problem!")</script>
     <?php endif; ?>

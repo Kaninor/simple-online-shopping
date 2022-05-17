@@ -4,7 +4,6 @@ const hr = document.getElementById("hr");
 const filter_submit = document.getElementById("filter-submit");
 const filter_clear = document.getElementById("filter-clear");
 const filter_product_keywords = document.getElementById("filter-product-keywords");
-const filter_product_name = document.getElementById("filter-product-name");
 const filter_product_price_min = document.getElementById("filter-product-price-min");
 const filter_product_price_max = document.getElementById("filter-product-price-max");
 const pagination_buttons = document.querySelectorAll(".pagination-button");
@@ -31,7 +30,6 @@ show_filter.addEventListener("click", () => {
 
 filter_clear.addEventListener("click", () => {
     filter_product_keywords.value = "";
-    filter_product_name.value = "";
     filter_product_price_min.value = "";
     filter_product_price_max.value = "";
 });
