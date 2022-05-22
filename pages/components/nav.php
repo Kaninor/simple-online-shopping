@@ -5,7 +5,7 @@
         <li><a id="contact-link" href="/store/pages/contactUs.php">Contact us</a></li>
     </ul>
     <ul id="auth-nav-ul">
-        <li><span style="color: white;"><?= $_SESSION['username'] ?></span></li>
+        <li><span style="color: white;" id="user-name-span"><?= $_SESSION['username'] ?></span></li>
         <li><a id="log-out">Log out</a></li>
     </ul>
 </div>

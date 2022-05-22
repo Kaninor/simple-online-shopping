@@ -10,6 +10,16 @@ auth_validator('/store/pages/auth/login.php');
 $conn = new Database();
 $result = $conn->select('fruit');
 
+$user_id = $conn->select('users', "username = '" . $_SESSION['username'] . "'");
+$user_id = $conn->fetch($user_id)['id'];
+
+$added_array = [];
+$added = $conn->select('cart', "user_id = '$user_id'");
+while ($row = $conn->fetch($added))
+{
+    array_push($added_array, $row['fruit_id']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +30,7 @@ $result = $conn->select('fruit');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../assets/logo1.png">
+    <script src="../js/axios.min.map"></script>
     <title>Home</title>
 </head>
 <body>
@@ -50,7 +61,11 @@ $result = $conn->select('fruit');
                         <h3>$<?= $row["price"] ?></h3>
                         <ul>
                             <li>
-                                <button class="add-to-card-btn">Add To Cart</button>
+                                <?php if (in_array($row['id'], $added_array)): ?>
+                                    <button class="added-to-card-btn cart-btn-stat" id="<?= $row["name"] ?>">Added</button>
+                                <?php else: ?>
+                                    <button class="add-to-card-btn cart-btn-stat" id="<?= $row["name"] ?>">Add To Cart</button>
+                                <?php endif; ?>
                             </li>
                             <li>
                                 <button class="buy-btn">Buy</button>
@@ -81,5 +96,6 @@ $result = $conn->select('fruit');
     <footer>Online Shopping	&copy;</footer>
 
     <script src="../js/index.js"></script>
+    <script src="../js/add_to_cart.js"></script>
 </body>
 </html>

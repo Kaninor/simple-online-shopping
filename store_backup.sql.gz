@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2022 at 01:02 PM
+-- Generation Time: May 22, 2022 at 07:13 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `store`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `user_id` int(11) NOT NULL,
+  `fruit_id` int(11) NOT NULL,
+  `added_in` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -94,7 +106,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(40) NOT NULL
+  `password` varchar(76) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -102,11 +114,19 @@ CREATE TABLE `users` (
 --
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`user_id`,`fruit_id`),
+  ADD KEY `fruit_id` (`fruit_id`);
+
+--
 -- Indexes for table `fruit`
 --
 ALTER TABLE `fruit`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `path` (`path`);
+  ADD UNIQUE KEY `path` (`path`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `problems`
@@ -143,6 +163,17 @@ ALTER TABLE `problems`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`fruit_id`) REFERENCES `fruit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

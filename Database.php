@@ -32,6 +32,12 @@ class Database
         return mysqli_query($this->make_connection(), $query);
     }
 
+    public function delete($table, $condition=0)
+    {
+        $query = "DELETE FROM $table WHERE $condition";
+        mysqli_query($this->make_connection(), $query);
+    }
+
     public function count($result)
     {
         return mysqli_num_rows($result);

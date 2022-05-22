@@ -319,6 +319,14 @@ footer {
     color: white;
 }
 
+.added-to-card-btn {
+    width: 60px;
+    background-color: rgb(60, 55, 98);
+    color: white;
+    padding: 0 5px;
+}
+
+
 .buy-btn {
     width: 60px;
     background-color: rgb(22, 117, 59);
@@ -327,6 +335,10 @@ footer {
 
 .add-to-card-btn:hover {
     background-color: rgb(70, 107, 228);
+}
+
+.added-to-card-btn:hover {
+    background-color: rgb(128, 129, 132);
 }
 
 .buy-btn:hover {
