@@ -52,16 +52,16 @@ auth_validator('/store/pages/auth/login.php');
 
             <img class="email-icon" src="../assets/email/email1.png" />
         </div>
-        
+    </main>
+
+    <div style="position: fixed; bottom: 0; width: 100%;">
         <p class="contactus-desc">
             Here you can tell us our bugs and we check it and then we will fix those bugs.<br>
             problem and email boxes are required but the phonenumber box is unrequired.<br>
             after fixing the bugs we will send you a message to your email and to your phonenumber if you've filled it.
         </p>
-    </main>
-
-
-    <footer>Online Shopping	&copy;</footer>
+        <footer>Online Shopping	&copy;</footer>
+    </div>
 
     <script src="../js/contactUs.js"></script>
 </body>

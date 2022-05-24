@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2022 at 07:13 PM
+-- Generation Time: May 24, 2022 at 02:04 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -99,6 +99,21 @@ CREATE TABLE `problems` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sells`
+--
+
+CREATE TABLE `sells` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `fruit_id` int(11) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `bought_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `card_id` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -135,6 +150,14 @@ ALTER TABLE `problems`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sells`
+--
+ALTER TABLE `sells`
+  ADD PRIMARY KEY (`id`,`user_id`,`fruit_id`),
+  ADD KEY `fruit_id` (`fruit_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -159,6 +182,12 @@ ALTER TABLE `problems`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `sells`
+--
+ALTER TABLE `sells`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -174,6 +203,13 @@ ALTER TABLE `users`
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`fruit_id`) REFERENCES `fruit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `sells`
+--
+ALTER TABLE `sells`
+  ADD CONSTRAINT `sells_ibfk_1` FOREIGN KEY (`fruit_id`) REFERENCES `fruit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sells_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

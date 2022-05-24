@@ -5,7 +5,7 @@
         <li><a id="contact-link" href="/store/pages/contactUs.php">Contact us</a></li>
     </ul>
     <ul id="auth-nav-ul">
-        <li><span style="color: white;" id="user-name-span"><?= $_SESSION['username'] ?></span></li>
+        <li><span style="color: white; user-select: none; cursor: pointer;" id="user-name-span" title="click to see your stats"><?= $_SESSION['username'] ?></span></li>
         <li><a id="log-out">Log out</a></li>
     </ul>
 </div>
@@ -25,10 +25,18 @@
         case 'http://localhost/store/pages/contactUs.php':
             document.getElementById('contact-link').classList.add("active");
             break;
+        case 'http://localhost/store/pages/stat/purchases.php':
+        case 'http://localhost/store/pages/stat/cart.php':
+            document.getElementById('user-name-span').classList.add("active");
+            break;
     }
 
     document.getElementById('log-out').addEventListener('click', () => {
         if (confirm("Are you sure you want to log out!?"))
             location.href = '/store/pages/auth/auth.php?logout=1';
+    });
+
+    document.getElementById('user-name-span').addEventListener('click', () => {
+        location.href = '/store/pages/stat/purchases.php';
     });
 </script>

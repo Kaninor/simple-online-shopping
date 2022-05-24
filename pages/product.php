@@ -109,7 +109,7 @@ while ($row = $conn->fetch($added))
                                             <?php endif; ?>
                                         </li>
                                         <li>
-                                            <button class="buy-btn">Buy</button>
+                                            <button class="buy-btn" id="<?= $_SESSION['product'][$i]['id'] ?>">Buy</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -149,7 +149,7 @@ while ($row = $conn->fetch($added))
                                         <?php endif; ?>
                                         </li>
                                         <li>
-                                            <button class="buy-btn">Buy</button>
+                                            <button class="buy-btn" id="<?= $row['id'] ?>">Buy</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -182,7 +182,7 @@ while ($row = $conn->fetch($added))
                                         <?php endif; ?>
                                         </li>
                                         <li>
-                                            <button class="buy-btn">Buy</button>
+                                            <button class="buy-btn" id="<?= $row['id'] ?>">Buy</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -214,7 +214,7 @@ while ($row = $conn->fetch($added))
                                     <?php endif; ?>
                                     </li>
                                     <li>
-                                        <button class="buy-btn">Buy</button>
+                                        <button class="buy-btn" id="<?= $row['id'] ?>">Buy</button>
                                     </li>
                                 </ul>
                             </div>
@@ -243,7 +243,7 @@ while ($row = $conn->fetch($added))
                                         <?php endif; ?>
                                         </li>
                                         <li>
-                                            <button class="buy-btn">Buy</button>
+                                            <button class="buy-btn" id="<?= $row['id'] ?>">Buy</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -267,5 +267,6 @@ while ($row = $conn->fetch($added))
 
     <script src="../js/product.js"></script>
     <script src="../js/add_to_cart.js"></script>
+    <script src="../js/buy.js"></script>
 </body>
 </html>

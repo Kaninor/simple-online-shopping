@@ -1,7 +1,7 @@
 <header>
     <div class="container">
         <div class="logo-heading-container">
-            <img class="logo" src="../assets/logo1.png">
+            <img class="logo" src="/store/assets/logo1.png">
             <h2 style="user-select: none">Online Shopping</h2>
         </div>
         <form method="POST" action="/store/pages/filter.php">

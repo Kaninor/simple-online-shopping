@@ -21,6 +21,12 @@ class Database
         return mysqli_query($this->make_connection(), $query);
     }
 
+    public function join($fields, $table, $join_expression, $condition=1) 
+    {
+        $query = "SELECT " . join(',', $fields) . " FROM $table JOIN $join_expression WHERE $condition";
+        return mysqli_query($this->make_connection(), $query);
+    }
+
     public function fetch($result)
     {
         return mysqli_fetch_array($result);
